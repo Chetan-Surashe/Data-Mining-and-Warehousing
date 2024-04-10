@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        :root {
+            --font-family: "Poppins", sans-serif;
+            --primary-color: #0b6aaa;
+            --background-color:lavender ;
+            --box-shadow-color: rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--background-color);
+            margin: 0;
+            font-family: var(--font-family);
+        }
+
+        .result-container {
+            text-align: center;
+            margin-top: 10%; /* Adjust this value to lift the box up or down */
+            width: 400px;
+            background-color: white;
+            box-shadow: 0 0 10px var(--box-shadow-color);
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+        .result-bracket {
+            display: inline-block;
+            border: 4px solid black;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 72px;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .result-green {
+            color: green;
+            display: inline-block;
+            opacity: 0;
+            animation: fadeInText 2s forwards;
+        }
+
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+            }
+            25% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .result-red {
+            color: red;
+            display: inline-block;
+            opacity: 0;
+            animation: fadeInText 2s forwards;
+        }
+
+        .return-link {
+            text-decoration: none;
+            color: var(--primary-color);
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 10px 30px;
+            margin-top: 20px;
+        }
+
+        .return-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="result-container">
+        {% if result == "Heart Disease Detected" %}
+        <div class="result-bracket result-red">{{ result }}</div>
+        {% else %}
+        <div class="result-bracket result-green">{{ result }}</div>
+        {% endif %}
+        <a class="return-link" href="/">Return to Prediction Menu</a>
+    </div>
+</body>
+
+</html>
